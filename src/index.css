@@ -1,0 +1,203 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --background: 220 20% 97%;
+    --foreground: 220 35% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 35% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 35% 10%;
+
+    --primary: 220 85% 52%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 340 72% 58%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 215 20% 92%;
+    --muted-foreground: 220 18% 38%;
+
+    --accent: 215 35% 92%;
+    --accent-foreground: 220 35% 10%;
+
+    --destructive: 0 78% 52%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 22% 78%;
+    --input: 220 22% 78%;
+    --ring: 220 85% 52%;
+
+    --radius: 1rem;
+
+    /* Process state colors - bold & vivid */
+    --state-new: 230 75% 62%;
+    --state-ready: 215 80% 55%;
+    --state-running: 155 75% 42%;
+    --state-waiting: 38 92% 52%;
+    --state-terminated: 340 75% 55%;
+    --state-suspended: 270 70% 58%;
+
+    /* Chart colors */
+    --chart-1: 220 85% 52%;
+    --chart-2: 340 72% 58%;
+    --chart-3: 155 75% 42%;
+    --chart-4: 38 92% 52%;
+    --chart-5: 270 70% 58%;
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 215 30% 13%;
+    --sidebar-primary: 215 90% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 40% 94%;
+    --sidebar-accent-foreground: 215 30% 13%;
+    --sidebar-border: 214 25% 82%;
+    --sidebar-ring: 215 90% 60%;
+    --sidebar: 0 0% 100%;
+
+    --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+
+  .dark {
+    --background: 220 15% 10%;
+    --foreground: 210 20% 95%;
+    --card: 220 15% 14%;
+    --card-foreground: 210 20% 95%;
+    --popover: 220 15% 14%;
+    --popover-foreground: 210 20% 95%;
+    --primary: 215 85% 55%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 340 60% 60%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 220 12% 22%;
+    --muted-foreground: 210 15% 65%;
+    --accent: 220 12% 18%;
+    --accent-foreground: 210 20% 95%;
+    --destructive: 0 65% 55%;
+    --destructive-foreground: 210 20% 95%;
+    --border: 220 15% 28%;
+    --input: 220 15% 28%;
+    --ring: 215 85% 55%;
+    --chart-1: 215 85% 55%;
+    --chart-2: 340 60% 60%;
+    --chart-3: 150 65% 50%;
+    --chart-4: 35 85% 55%;
+    --chart-5: 270 60% 60%;
+    --sidebar: 220 15% 14%;
+    --sidebar-foreground: 210 20% 95%;
+    --sidebar-primary: 215 85% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 12% 18%;
+    --sidebar-accent-foreground: 210 20% 95%;
+    --sidebar-border: 220 15% 28%;
+    --sidebar-ring: 215 85% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    font-weight: 400;
+  }
+  code, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer components {
+  /* Bold card with subtle gradient */
+  .soft-card {
+    @apply bg-card rounded-xl overflow-hidden transition-all duration-300 border-2 border-border;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.06);
+    background: linear-gradient(180deg, hsl(0 0% 100%), hsl(220 20% 98%));
+  }
+  .soft-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.08);
+    border-color: hsl(var(--primary) / 0.4);
+  }
+
+  /* Section card for simulator */
+  .section {
+    @apply bg-card rounded-xl overflow-hidden border-2 border-border;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.06);
+    background: linear-gradient(180deg, hsl(0 0% 100%), hsl(220 20% 98%));
+  }
+
+  .section-header {
+    @apply text-[11px] font-extrabold tracking-[0.08em] uppercase text-foreground px-5 py-3.5 border-b-2 border-border;
+    background: linear-gradient(180deg, hsl(220 20% 97%), hsl(220 18% 95%));
+  }
+
+  .section-body {
+    @apply p-5;
+  }
+
+  /* Process state chips */
+  .state-chip {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-mono font-extrabold tracking-wide;
+  }
+  .state-new {
+    @apply bg-[hsl(var(--state-new)/0.2)] text-foreground border-2 border-[hsl(var(--state-new))];
+  }
+  .state-ready {
+    @apply bg-[hsl(var(--state-ready)/0.2)] text-foreground border-2 border-[hsl(var(--state-ready))];
+  }
+  .state-running {
+    @apply bg-[hsl(var(--state-running)/0.2)] text-foreground border-2 border-[hsl(var(--state-running))];
+  }
+  .state-waiting {
+    @apply bg-[hsl(var(--state-waiting)/0.2)] text-foreground border-2 border-[hsl(var(--state-waiting))];
+  }
+  .state-terminated {
+    @apply bg-[hsl(var(--state-terminated)/0.2)] text-foreground border-2 border-[hsl(var(--state-terminated))];
+  }
+  .state-suspended {
+    @apply bg-[hsl(var(--state-suspended)/0.2)] text-foreground border-2 border-[hsl(var(--state-suspended))];
+  }
+
+  /* Table zebra striping */
+  .table-zebra tbody tr:nth-child(even) {
+    @apply bg-muted/30;
+  }
+
+  /* Metric card with gradient */
+  .metric-card {
+    @apply relative rounded-xl bg-card p-4 overflow-hidden transition-all duration-300 border-2 border-border;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    background: linear-gradient(180deg, hsl(0 0% 100%), hsl(220 20% 98%));
+  }
+  .metric-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+    border-color: hsl(var(--primary) / 0.4);
+  }
+
+  /* Primary button - bold with gradient */
+  .btn-gradient {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg text-sm font-extrabold transition-all duration-300;
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(220 80% 45%));
+    color: hsl(var(--primary-foreground));
+    box-shadow: 0 4px 16px hsl(var(--primary) / 0.4);
+  }
+  .btn-gradient:hover {
+    transform: scale(1.04) translateY(-1px);
+    box-shadow: 0 8px 24px hsl(var(--primary) / 0.55);
+    filter: brightness(1.1);
+  }
+
+  .btn-outline-soft {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg text-sm font-extrabold border-2 border-border text-foreground transition-all duration-300 hover:border-primary hover:bg-primary/10 hover:shadow-md;
+  }
+}
