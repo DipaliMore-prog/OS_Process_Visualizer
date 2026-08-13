@@ -1,4 +1,4 @@
- OS Process Scheduler
+# OS Process Scheduler
 
 > A modern, interactive web application for visualizing and simulating CPU process scheduling algorithms.
 
